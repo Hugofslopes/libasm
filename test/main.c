@@ -156,3 +156,39 @@ void	test_ft_read()
 	perror("ft_read");
 	printf("errno: %d\n", errno);
 }
+
+void    test_ft_atoi_base()
+{
+		errno = 0;
+	printf("Binary '101': %d (errno: %d)\n", ft_atoi_base("101", 2), errno);
+	
+	errno = 0;
+	printf("Decimal '123': %d (errno: %d)\n", ft_atoi_base("123", 10), errno);
+	
+	errno = 0;
+	printf("Hex 'FF': %d (errno: %d)\n", ft_atoi_base("FF", 16), errno);
+	
+	errno = 0;
+	printf("Hex with whitespace ' 1A': %d (errno: %d)\n", ft_atoi_base(" 1A", 16), errno);
+	
+	errno = 0;
+	printf("Invalid char 'G' in hex: %d (errno: %d)\n", ft_atoi_base("1G", 16), errno);
+	
+	errno = 0;
+	printf("Invalid base 50: %d (errno: %d)\n", ft_atoi_base("10", 50), errno);
+	
+	errno = 0;
+	printf("NULL pointer: %d (errno: %d)\n", ft_atoi_base(NULL, 16), errno);
+	
+	return 0;
+}
+
+void    test_ft_list_push_front()
+{
+
+}
+
+void    test_ft_list_size()
+{
+	
+}
