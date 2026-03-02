@@ -1,20 +1,28 @@
+bits 64
 global ft_strlen
+extern __errno_location
 
-section .text
 ft_strlen:
-    push    rbp            ; Save base pointer
-    mov     rbp, rsp       ; Set up new base pointer
-    mov     rax, 0         ; Initialize counter to 0
-    mov     rcx, rdi       ; Move string pointer to rcx
+	; Check for NULL pointer
+	cmp rdi, 0
+	je .null_pointer
 
-count_loop:
-    cmp     byte [rcx], 0  ; Compare current byte with null terminator
-    je      end            ; If equal (found null), jump to end
-    inc     rax            ; Increment counter
-    inc     rcx            ; Move to next character
-    jmp     count_loop     ; Continue loop
+	mov rax, 0         ; Initialize counter to 0
 
-end:
-    mov     rsp, rbp       ; Restore stack pointer
-    pop     rbp            ; Restore base pointer
-    ret                    ; Return (length is in rax)
+.count_loop:
+	cmp byte [rdi], 0  ; Compare current byte with null terminator
+	je .end
+	inc rax             ; Increment counter
+	inc rdi
+	jmp .count_loop
+
+.null_pointer:
+	; Set errno = EFAULT (bad address)
+	mov edi, 14         ; EFAULT
+	call __errno_location
+	mov dword [rax], edi
+	xor rax, rax        ; Return 0
+	ret
+
+.end:
+	ret

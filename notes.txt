@@ -1,0 +1,80 @@
+MOV ADD JMP (intructions in assembly)
+genral purpose registers 
+special puroiose register 
+status register
+
+flags
+ 
+
+ ADD R1,5 (adiciona ao r1 o valor de 5)
+ ADD R1,[1000] (adiciona o valor contido no
+  enderesso de 1000 para r1)
+ADD R1, [R2] (adiconar r1 o valor contido no R2)
+
+
+INSTRUCTIONS 
+Arithmetic
+ADD R1,R2 adds the value from R2 to R1
+SUB  R1, R2 subtracts are two from R1
+MUL R1, R2
+DIV R1, R2
+
+LOgic
+AND R1, R2 bitwise and 
+OR R1, R2 bitwise or
+XOR R1, R2 exclusive or
+NoT R1 change the 1 to 0
+
+Control
+JMP LABEL JUmps to certain part of the code
+CMP R1, R2 compares the values in R1 with R2
+    JE jumps if they are equal 
+    JNE Jumps it they are different
+
+MOV R1, R2 moves data from R2 to r1
+PUSH R1 pushes R1 to the stack 
+POP R1 retrieves R1 from the stack
+
+SHL R1,1 Shift bits left , multiplies the value by 2
+SHR R1,1 Shift bits right, divides the value by 2
+ROL R1,1 Rotate the bits to the left
+ROR R1,1 Rotate the bits to the right
+
+Fetch Decoding and executing 
+Retrieves the instruction from the program
+On decode  identifies what needs to be done based on the 
+received instruction
+Does the operation referenced by the instruction
+
+MOV R1, 5
+MOV R2, 10
+ADD R3, R1, R2
+AND R4, R3, 1 checks the less significant bit
+ of r3 and saves it in R4
+MOV R5, 'odd' saves 0 in R5
+CMP R4, 0 compares r4 with even
+ JE even_number if even call even_number
+ JMP end else ends program
+
+ even_number:
+ MOV R5, 'even'
+ end:
+
+
+| Specifier | Size     | Typical use        |
+| --------- | -------- | ------------------ |
+| `byte`    | 1 byte   | char, flags        |
+| `word`    | 2 bytes  | short int          |
+| `dword`   | 4 bytes  | int, errno         |
+| `qword`   | 8 bytes  | pointers, long int |
+| `tword`   | 10 bytes | extended float     |
+| `oword`   | 16 bytes | SSE / SIMD         |
+
+
+| 64-bit register | 32-bit | 16-bit | 8-bit low | 8-bit high |
+| --------------- | ------ | ------ | --------- | ---------- |
+| RDI             | EDI    | DI     | DIL       | —          |
+| RSI             | ESI    | SI     | SIL       | —          |
+| RAX             | EAX    | AX     | AL        | AH         |
+
+if use full rdi could have garbadge there
