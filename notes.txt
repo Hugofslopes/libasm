@@ -78,3 +78,10 @@ CMP R4, 0 compares r4 with even
 | RAX             | EAX    | AX     | AL        | AH         |
 
 if use full rdi could have garbadge there
+
+
+| Register Group | Registers                       |
+| -------------- | ------------------------------- |
+| Argument regs  | RDI, RSI, RDX, RCX, R8, R9      |
+| Volatile       | RAX, RCX, RDX, RSI, RDI, R8–R11 |
+| Non-volatile   | RBX, RBP, R12–R15               |

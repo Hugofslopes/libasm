@@ -32,5 +32,8 @@ void    ft_list_push_front(t_list **begin_list, void *data);
 void    test_ft_list_push_front();
 
 int     ft_list_size(t_list *begin_list);
-void    test_ft_list_size(); 
+void    test_ft_list_size();
+
+void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
+void test_ft_list_remove_if();
 #endif
